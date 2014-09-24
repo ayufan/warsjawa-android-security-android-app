@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pl.warsjawa.android.lab1">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="pl.warsjawa.android.LoginActivity"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="pl.warsjawa.android.lab1.SHOW_LOGIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pl.warsjawa.android.LoggedActivity"
+            android:label="@string/title_activity_logged" >
+            <intent-filter>
+                <action android:name="pl.warsjawa.android.lab1.SHOW_LOGGED" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="pl.warsjawa.android.LabService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="pl.warsjawa.android.lab1.ACCESS_LOGIN_SERVICE">
+            <intent-filter>
+                <action android:name="pl.warsjawa.android.lab1.LOGIN_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
